@@ -1,10 +1,15 @@
 name: My First Workflow
 
-on: push
+on:
+  workflow_dispatch:
+    inputs:
+      greeting_name:
+        description: 'Who should be greeted?'
+        default: 'World'
 
 jobs:
   say-hello:
     runs-on: ubuntu-latest
     steps:
       - name: Print a greeting
-        run: echo "Hello from GitHub Actions!"
+        run: echo "Hello, ${{ github.event.inputs.greeting_name }}!"
