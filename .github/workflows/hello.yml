@@ -1,15 +1,27 @@
-name: My First Workflow
+name: Generate UAT Dashboard
 
 on:
   workflow_dispatch:
-    inputs:
-      greeting_name:
-        description: 'Who should be greeted?'
-        default: 'World'
 
 jobs:
-  say-hello:
+  build-dashboard:
     runs-on: ubuntu-latest
     steps:
-      - name: Print a greeting
-        run: echo "Hello, ${{ github.event.inputs.greeting_name }}!"
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run dashboard script
+        run: python3 generate_dashboard.py
+
+      - name: Commit and push updated dashboard
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Auto-update dashboard" || echo "No changes to commit"
+          git push
