@@ -1,25 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.6">
-  <style type="text/css">
-    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    li.li3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Times; -webkit-text-stroke: #000000}
-    span.s1 {font-kerning: none}
-    span.s2 {-webkit-text-stroke: 0px #000000}
-    ul.ul1 {list-style-type: disc}
-  </style>
+  <title>UAT Practice Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; font: 24.0px Times; -webkit-text-stroke: #000000"><span class="s1"><b>Welcome to my Practice Repo</b><b></b></span></h1>
-<p class="p2"><span class="s1">This is my <b>first</b> HTML file in a Git repository.</span></p>
-<ul class="ul1">
-  <li class="li3"><span class="s2"></span><span class="s1">First item</span></li>
-  <li class="li3"><span class="s2"></span><span class="s1">Second item</span></li>
-</ul>
+  <h1>UAT Status Dashboard</h1>
+  <canvas id="myChart" width="400" height="200"></canvas>
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Passed", "Failed", "Blocked"],
+        datasets: [{
+          label: 'Test Results',
+          data: [94, 7, 9],
+          backgroundColor: ['green', 'red', 'orange']
+        }]
+      }
+    });
+  </script>
 </body>
 </html>
