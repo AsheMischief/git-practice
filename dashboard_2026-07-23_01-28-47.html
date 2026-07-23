@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UAT Practice Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>UAT Status Dashboard</h1>
+  <p>Generated: 2026-07-23_01-28-47</p>
+  <canvas id="myChart" width="400" height="200"></canvas>
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ["Passed", "Failed", "Blocked"],
+        datasets: [{
+          label: 'Test Results',
+          data: [92, 9, 6],
+          backgroundColor: ['green', 'red', 'orange']
+        }]
+      }
+    });
+  </script>
+</body>
+</html>
