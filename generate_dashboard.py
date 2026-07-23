@@ -1,14 +1,18 @@
 import json
 import random
+from datetime import datetime
 
-# Step 2 equivalent: fake "gathered" data (in real life, this would come from an API or file)
+# Fake "gathered" data
 data = {
     "Passed": random.randint(50, 100),
     "Failed": random.randint(0, 20),
     "Blocked": random.randint(0, 10),
 }
 
-# Step 3: build an HTML page with a chart, embedding the data directly
+# Build a unique filename using the current date/time
+timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+filename = f"dashboard_{timestamp}.html"
+
 html = f"""<!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +21,7 @@ html = f"""<!DOCTYPE html>
 </head>
 <body>
   <h1>UAT Status Dashboard</h1>
+  <p>Generated: {timestamp}</p>
   <canvas id="myChart" width="400" height="200"></canvas>
   <script>
     const ctx = document.getElementById('myChart');
@@ -36,7 +41,7 @@ html = f"""<!DOCTYPE html>
 </html>
 """
 
-with open("index.html", "w") as f:
+with open(filename, "w") as f:
     f.write(html)
 
-print("Dashboard generated with data:", data)
+print(f"Dashboard generated: {filename}")
